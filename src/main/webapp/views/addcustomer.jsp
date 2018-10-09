@@ -1,10 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<meta charset="UTF-8">
+<title>Customer service</title>
 </head>
 <body>
 	<h3>Add customer</h3>
@@ -15,5 +14,7 @@
 		<input type="submit"/>
 	</form>
 	<label style="color: red; white-space: pre-wrap">${errorMessage}</label>
+	<br/>
+	<a href="/index.jsp">Back</a>	
 </body>
 </html>

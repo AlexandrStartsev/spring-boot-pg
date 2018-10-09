@@ -1,10 +1,10 @@
 package edu.alex;
 
+import java.util.List;
 import java.util.stream.Collectors;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
 import org.springframework.stereotype.Controller;
@@ -23,9 +23,17 @@ public class CustomerController {
     private EntityManager em;
 	
 	@GetMapping("/addcustomer")
-	public String addCustomerGet(final Model model, HttpServletResponse response) {
+	public String addCustomerGet(final Model model) {
 		model.addAttribute("customer", new CustomerEntity());
 		return "addcustomer";
+	}
+	
+	@GetMapping("/list")
+	@Transactional(readOnly = true)
+	public String showAllCustomers(final Model model) {
+		List<CustomerEntity> customers = em.createQuery("from CustomerEntity", CustomerEntity.class).getResultList();
+		model.addAttribute("customers", customers);
+		return "listcustomers";
 	}
 	
 	@Transactional

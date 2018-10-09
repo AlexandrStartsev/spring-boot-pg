@@ -1,7 +1,8 @@
 <html>
 	<body>
-		<h2>Yo!</h2>
+		<h2>Menu</h2>
 		
-		<a href="/customer/addcustomer">Add customer</a>
+		<a href="/customer/addcustomer">Add customer</a><br/>
+		<a href="/customer/list">Show all customers</a><br/>
 	</body>
 </html>
