@@ -10,10 +10,12 @@ import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.Size;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
-@Data
+@Data @AllArgsConstructor @NoArgsConstructor
 @Table(name = "Customer")
 public class CustomerEntity {
 	@Id
