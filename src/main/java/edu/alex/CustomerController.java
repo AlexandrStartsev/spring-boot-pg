@@ -16,29 +16,32 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping("/customer")
 public class CustomerController {
+	/*@Autowired
+	ICustomerDAO dao;*/
+	
 	@Autowired
-	ICustomerDAO dao;
+	ICustomerRepository mongo;
 	
 	@GetMapping("/addcustomer")
 	public String addCustomerGet(final Model model) {
-		model.addAttribute("customer", new CustomerEntity());
+		model.addAttribute("customer", new CustomerEntityDocument());
 		return "addcustomer";
 	}
 	
 	@GetMapping("/list")
 	public String showAllCustomers(final Model model) {
-		model.addAttribute("customers", dao.findAll());
+		model.addAttribute("customers", mongo.findAll());
 		return "listcustomers";
 	}
 	
 	@PostMapping("/addcustomer")
-	public String addCustomerPost(final Model model, @Valid @ModelAttribute("customer") CustomerEntity payload, BindingResult bindingResult ) {
+	public String addCustomerPost(final Model model, @Valid @ModelAttribute("customer") CustomerEntityDocument payload, BindingResult bindingResult ) {
 		if(bindingResult.hasErrors()) {
 			model.addAttribute("customer", payload);
 			model.addAttribute("errorMessage", bindingResult.getFieldErrors().stream().map(error -> error.getField() + ": " + error.getDefaultMessage()).collect(Collectors.joining("\n")));
 			return "addcustomer";
 		}
-		dao.save(payload);
+		mongo.save(payload);
 		return "redirect:/index.jsp";
 	}
 }

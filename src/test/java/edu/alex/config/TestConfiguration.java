@@ -15,7 +15,7 @@ public class TestConfiguration {
 	@Bean
 	ICustomerDAO mockCustomerDAO() {
 		ICustomerDAO mock = Mockito.mock(ICustomerDAO.class);
-		Mockito.when(mock.findAll()).thenReturn(Arrays.asList(new CustomerEntity(1, "Test first", "Test last", 30)));
+		Mockito.when(mock.findAll()).thenReturn(Arrays.asList(new CustomerEntity("1", "Test first", "Test last", 30)));
 		
 		return mock;
 	}
