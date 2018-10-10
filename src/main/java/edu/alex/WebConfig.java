@@ -1,6 +1,7 @@
 package edu.alex;
 
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.ViewResolverRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
@@ -12,7 +13,7 @@ public class WebConfig extends WebMvcConfigurationSupport {
 
 	@Override
 	public void addViewControllers(ViewControllerRegistry registry) {
-	    registry.addRedirectViewController("/", "/index.jsp");
+	    registry.addRedirectViewController("/", "/index.html");
 	}
 	
     @Override
@@ -22,5 +23,10 @@ public class WebConfig extends WebMvcConfigurationSupport {
         resolver.setSuffix(".jsp");
         resolver.setViewClass(JstlView.class);
         registry.viewResolver(resolver);
-    }	
+    }
+    
+    @Override
+    protected void addResourceHandlers(ResourceHandlerRegistry registry) {
+    	registry.addResourceHandler("/**").addResourceLocations("/static/");
+    }
 }

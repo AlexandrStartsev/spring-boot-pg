@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "sourceMap": true,
+    "noImplicitAny": true,
+    "preserveConstEnums": true,
+    "module": "esnext",
+    "target": "es5",
+    "experimentalDecorators": true,
+    "lib": [ "dom", "es5", "scripthost", "es6", "es2015" ],
+    "allowJs": true,
+    "moduleResolution": "node",
+    "jsx": "react"
+  }
+}

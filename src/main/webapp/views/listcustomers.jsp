@@ -17,6 +17,6 @@
 		</tbody>
 	</table>
 	<br/>
-	<a href="/index.jsp">Back</a>
+	<a href="/index.html">Back</a>
 </body>
 </html>
