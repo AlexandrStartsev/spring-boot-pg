@@ -16,7 +16,8 @@
   </parent>
 
   <properties>
-    <java.version>1.8</java.version>
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
   </properties>
 
   <dependencies>
@@ -84,17 +85,14 @@
         <artifactId>frontend-maven-plugin</artifactId>
         <!-- https://repo1.maven.org/maven2/com/github/eirslett/frontend-maven-plugin/ -->
         <version>1.6</version>
+        <configuration>
+        <!-- C:\Program Files>mklink /D node nodejs  -->
+          <installDirectory>C:\Program Files</installDirectory>
+        </configuration>
         <executions>
-          <execution>
-            <id>install node and npm</id>
-            <goals>
-              <goal>install-node-and-npm</goal>
-            </goals>
-            <configuration>
-              <nodeVersion>v8.11.1</nodeVersion>
-              <npmVersion>5.6.0</npmVersion>
-            </configuration>
-          </execution>
+          <!-- <execution> <id>install node and npm</id> <goals> <goal>install-node-and-npm</goal> 
+            </goals> <configuration> <nodeVersion>v8.11.1</nodeVersion> <npmVersion>5.6.0</npmVersion> 
+            </configuration> </execution> -->
           <execution>
             <id>npm install</id>
             <goals>
@@ -103,7 +101,7 @@
             <configuration>
               <arguments>install</arguments>
             </configuration>
-          </execution>        
+          </execution>
           <execution>
             <id>npm run build</id>
             <goals>
