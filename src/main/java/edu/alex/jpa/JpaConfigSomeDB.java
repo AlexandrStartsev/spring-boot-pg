@@ -5,11 +5,11 @@ import java.util.Properties;
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
 
-import org.springframework.beans.factory.annotation.Autowire;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
+import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.jpa.JpaTransactionManager;
@@ -25,13 +25,13 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableJpaRepositories(basePackages = {"edu.alex.jpa"}, entityManagerFactoryRef = "somedb")
 public class JpaConfigSomeDB {
 	
-	@Bean(autowire=Autowire.NO)
+	@Bean
 	@ConfigurationProperties("somedb")
 	protected DataSource dataSource() {
 		return new DriverManagerDataSource();
 	}
 	
-	@Bean(autowire=Autowire.NO)
+	@Bean
 	@ConfigurationProperties("somedb")
 	protected Properties hbnProps() {
 		return new Properties();
@@ -57,4 +57,8 @@ public class JpaConfigSomeDB {
 		return em;
 	}
 
+	@Bean
+	public static PropertySourcesPlaceholderConfigurer properties() {
+	    return new PropertySourcesPlaceholderConfigurer();
+	}
 }

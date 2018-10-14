@@ -4,7 +4,6 @@ import java.util.stream.Collectors;
 
 import javax.validation.Valid;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -22,8 +21,11 @@ public class CustomerController {
 	/*@Autowired
 	ICustomerDAO dao;*/
 	
-	@Autowired
-	ICustomerRepository mongo;
+	private final ICustomerRepository mongo;
+	
+	public CustomerController(ICustomerRepository mongo) {
+		this.mongo = mongo;
+	}
 	
 	@GetMapping("/addcustomer")
 	public String addCustomerGet(final Model model) {

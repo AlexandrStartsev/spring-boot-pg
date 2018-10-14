@@ -1,6 +1,5 @@
 package edu.alex.mongo;
 
-import org.springframework.beans.factory.annotation.Autowire;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -24,7 +23,7 @@ public class MongoConfigTestDb {
 		private String database;
 	}
 	
-	@Bean(autowire=Autowire.NO)
+	@Bean
 	@ConfigurationProperties(prefix="testdb")
 	protected MongoProps getProperties() {
 		return new MongoProps();
