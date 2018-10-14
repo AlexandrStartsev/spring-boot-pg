@@ -13,6 +13,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import edu.alex.entities.CustomerEntityDocument;
+import edu.alex.mongo.ICustomerRepository;
+
 @Controller
 @RequestMapping("/customer")
 public class CustomerController {
@@ -42,6 +45,6 @@ public class CustomerController {
 			return "addcustomer";
 		}
 		mongo.save(payload);
-		return "redirect:/index.jsp";
+		return "redirect:/index.html";
 	}
 }

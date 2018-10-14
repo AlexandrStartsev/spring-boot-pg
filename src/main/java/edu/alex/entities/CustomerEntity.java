@@ -1,4 +1,4 @@
-package edu.alex;
+package edu.alex.entities;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

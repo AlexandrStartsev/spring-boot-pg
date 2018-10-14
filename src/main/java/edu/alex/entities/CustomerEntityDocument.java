@@ -1,4 +1,4 @@
-package edu.alex;
+package edu.alex.entities;
 
 import org.springframework.data.mongodb.core.mapping.Document;
 

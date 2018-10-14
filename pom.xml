@@ -80,39 +80,22 @@
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-maven-plugin</artifactId>
       </plugin>
-      <plugin>
-        <groupId>com.github.eirslett</groupId>
-        <artifactId>frontend-maven-plugin</artifactId>
-        <!-- https://repo1.maven.org/maven2/com/github/eirslett/frontend-maven-plugin/ -->
-        <version>1.6</version>
-        <configuration>
-        <!-- C:\Program Files>mklink /D node nodejs  -->
-          <installDirectory>C:\Program Files</installDirectory>
-        </configuration>
+     <!--  <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>exec-maven-plugin</artifactId>
         <executions>
-          <!-- <execution> <id>install node and npm</id> <goals> <goal>install-node-and-npm</goal> 
-            </goals> <configuration> <nodeVersion>v8.11.1</nodeVersion> <npmVersion>5.6.0</npmVersion> 
-            </configuration> </execution> -->
           <execution>
-            <id>npm install</id>
+            <phase> </phase>
             <goals>
-              <goal>npm</goal>
+              <goal>exec</goal>
             </goals>
             <configuration>
-              <arguments>install</arguments>
-            </configuration>
-          </execution>
-          <execution>
-            <id>npm run build</id>
-            <goals>
-              <goal>npm</goal>
-            </goals>
-            <configuration>
-              <arguments>run build</arguments>
+              <executable>gedit</executable>
+              <arguments></arguments>
             </configuration>
           </execution>
         </executions>
-      </plugin>
+      </plugin> -->
     </plugins>
   </build>
 </project>

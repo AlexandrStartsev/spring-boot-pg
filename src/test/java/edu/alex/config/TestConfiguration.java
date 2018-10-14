@@ -6,8 +6,8 @@ import org.mockito.Mockito;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import edu.alex.CustomerEntity;
-import edu.alex.ICustomerDAO;
+import edu.alex.entities.CustomerEntity;
+import edu.alex.jpa.ICustomerDAO;
 
 @Configuration
 public class TestConfiguration {

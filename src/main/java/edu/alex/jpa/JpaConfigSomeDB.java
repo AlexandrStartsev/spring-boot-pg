@@ -1,10 +1,11 @@
-package edu.alex;
+package edu.alex.jpa;
 
 import java.util.Properties;
 
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
 
+import org.springframework.beans.factory.annotation.Autowire;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -21,17 +22,18 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @Configuration
 @EnableTransactionManagement
 @PropertySource("classpath:jdbc-${env}.properties")
-@EnableJpaRepositories(basePackages = {"edu.alex"}, entityManagerFactoryRef = "somedb")
+@EnableJpaRepositories(basePackages = {"edu.alex.jpa"}, entityManagerFactoryRef = "somedb")
 public class JpaConfigSomeDB {
-	@Bean
+	
+	@Bean(autowire=Autowire.NO)
 	@ConfigurationProperties("somedb")
-	public DataSource dataSource() {
+	protected DataSource dataSource() {
 		return new DriverManagerDataSource();
 	}
 	
-	@Bean
+	@Bean(autowire=Autowire.NO)
 	@ConfigurationProperties("somedb")
-	public Properties hbnProps() {
+	protected Properties hbnProps() {
 		return new Properties();
 	}
 	
@@ -47,7 +49,7 @@ public class JpaConfigSomeDB {
 	public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
 		LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
 		em.setDataSource(dataSource());
-		em.setPackagesToScan(new String[] { "edu.alex" });
+		em.setPackagesToScan(new String[] { "edu.alex.entities" });
 
 		JpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
 		em.setJpaVendorAdapter(vendorAdapter);
