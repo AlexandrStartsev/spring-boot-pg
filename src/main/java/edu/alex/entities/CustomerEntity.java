@@ -18,6 +18,7 @@ import lombok.NoArgsConstructor;
 @Data @AllArgsConstructor @NoArgsConstructor
 @Table(name = "Customer")
 public class CustomerEntity {
+	// this is only relevant to JPA, not to mongo, however I keep uuid so I can have string id. 
 	@Id
 	@GeneratedValue(generator = "uuid")
 	@GenericGenerator(name = "uuid", strategy = "uuid2")

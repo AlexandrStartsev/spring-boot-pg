@@ -32,9 +32,7 @@ public class MongoConfigTestDb {
 	
 	@Bean("testMongoDb")
 	public MongoTemplate primaryMongoTemplate() throws Exception {
-		//idk why, but i get exception in one of several threads that try to connect to cloud db. But everything still works fine ¯\_(ツ)_/¯ 
 		final MongoProps props = getProperties();
-				
 		final MongoClientURI uri = new MongoClientURI(props.getUrl());
 		return new MongoTemplate(new SimpleMongoDbFactory(new MongoClient(uri), props.getDatabase()));
 	}
